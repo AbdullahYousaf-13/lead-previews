@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>A Family Chiropractic Center — website concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue:   #3a9ecb; /* verified: their real CSS background/color value, multiple rules */
+    --blue-d: #084a5c; /* verified: their real CSS color value */
+    --ink:    #232323;
+    --muted:  #5f5f5f;
+    --cream:  #faf6ef;
+    --line:   #e3dccb;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Karla', -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); color: var(--ink); background: var(--cream); line-height: 1.6; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+
+  .disclaimer { background: #eef6fa; color: #0d5068; font-size: 0.82rem;
+                text-align: center; padding: 0.55rem 1rem; border-bottom: 1px solid var(--line); }
+
+  /* subtle grain, used once, on the hero only */
+  .grain { position: relative; }
+  .grain::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .05; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  header.top { padding: 1.5rem 0; border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .wordmark { font-family: var(--font-display); font-weight: 600; font-size: 1.35rem; color: var(--blue-d); }
+  header.top nav { display: flex; gap: 1.75rem; font-size: 0.92rem; }
+  header.top nav a { text-decoration: none; color: var(--muted); }
+  header.top nav a:hover { color: var(--blue-d); }
+  .call-btn { background: var(--blue); color: #fff; padding: 0.55rem 1.2rem; border-radius: 3px;
+              text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+
+  /* HERO — asymmetric two-column, oversized editorial word */
+  .hero { padding: clamp(3rem, 8vw, 6rem) 0 clamp(2.5rem, 6vw, 4rem); }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
+  @media (max-width: 760px) { .hero .wrap { grid-template-columns: 1fr; } }
+  .hero .eyebrow { color: var(--blue); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.8rem; }
+  .hero h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.6rem, 6vw, 4.2rem);
+             line-height: 0.98; margin: 0.5rem 0 1.25rem; color: var(--ink); }
+  .hero h1 em { font-style: normal; color: var(--blue-d); font-weight: 600; }
+  .hero p.lead { font-size: 1.08rem; color: var(--muted); max-width: 42ch; }
+  .hero .figures { display: flex; align-items: center; justify-content: center; gap: 0.6rem; }
+  .fig { width: 100%; max-width: 320px; aspect-ratio: 1; border-radius: 4px; background: var(--blue);
+         display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .fig svg { width: 62%; height: 62%; fill: #fff; opacity: 0.95; }
+  .hero-cta { margin-top: 1.75rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: var(--blue-d); color: #fff; padding: 0.75rem 1.5rem; border-radius: 3px;
+                 text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+  .btn-ghost { border: 1.5px solid var(--line); color: var(--ink); padding: 0.72rem 1.4rem; border-radius: 3px;
+               text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+
+  /* EDITORIAL PULL — oversized word, the one big typographic moment */
+  .pull { padding: clamp(2.5rem, 6vw, 4rem) 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .pull .big { font-family: var(--font-display); font-weight: 600; font-size: clamp(3rem, 9vw, 7rem);
+               color: var(--blue); line-height: 0.9; }
+  .pull p { max-width: 46ch; margin-top: 1rem; color: var(--muted); font-size: 1.05rem; }
+
+  /* HOURS — a real table, not cards */
+  .hours-sec { padding: clamp(3rem, 6vw, 4.5rem) 0; }
+  .hours-sec h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+  .hours-sec .sub { color: var(--muted); margin-bottom: 2rem; max-width: 55ch; }
+  table.hours { width: 100%; border-collapse: collapse; font-size: 0.98rem; }
+  table.hours tr { border-bottom: 1px solid var(--line); }
+  table.hours td { padding: 0.85rem 0.5rem; }
+  table.hours td:first-child { font-family: var(--font-display); font-weight: 600; color: var(--blue-d); width: 40%; }
+  table.hours td:last-child { color: var(--muted); text-align: right; }
+
+  /* ABOUT — asymmetric two column with reveal */
+  .about-sec { background: #fff; padding: clamp(3rem, 6vw, 5rem) 0; }
+  .about-sec .wrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 3rem; align-items: start; }
+  @media (max-width: 760px) { .about-sec .wrap { grid-template-columns: 1fr; } }
+  .doc-card { background: var(--cream); border: 1px solid var(--line); border-radius: 6px; padding: 2rem; }
+  .doc-card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.5rem; color: var(--blue-d); }
+  .doc-card .role { color: var(--muted); font-size: 0.9rem; margin-top: 0.2rem; margin-bottom: 1rem; }
+  .doc-card p { font-size: 0.95rem; color: var(--muted); }
+  .techniques h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 1.5rem; }
+  .tech-list { counter-reset: t; list-style: none; }
+  .tech-list li { counter-increment: t; display: flex; gap: 1.25rem; padding: 1.1rem 0; border-top: 1px solid var(--line); }
+  .tech-list li:last-child { border-bottom: 1px solid var(--line); }
+  .tech-list li::before { content: counter(t, decimal-leading-zero); font-family: var(--font-display);
+                           font-weight: 600; color: var(--blue); font-size: 1.1rem; flex-shrink: 0; width: 2.2rem; }
+  .tech-list strong { display: block; font-size: 1rem; }
+  .tech-list span { color: var(--muted); font-size: 0.92rem; }
+
+  /* SERVICES + INSURANCE — plain list, not cards, deliberately different from tech-list numbering */
+  .services-sec { padding: clamp(3rem, 6vw, 4.5rem) 0; }
+  .services-sec .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  @media (max-width: 700px) { .services-sec .wrap { grid-template-columns: 1fr; } }
+  .services-sec h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.4rem; margin-bottom: 1rem; color: var(--blue-d); }
+  .plain-list { list-style: none; }
+  .plain-list li { padding: 0.55rem 0; border-bottom: 1px dotted var(--line); font-size: 0.98rem; color: var(--muted); }
+  .plain-list li:first-child { padding-top: 0; }
+
+  /* CONTACT — full bleed blue block */
+  .contact-sec { background: var(--blue-d); color: #fff; padding: clamp(3rem, 7vw, 5rem) 0; }
+  .contact-sec .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  @media (max-width: 700px) { .contact-sec .wrap { grid-template-columns: 1fr; } }
+  .contact-sec h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 1rem; }
+  .contact-sec p { color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; max-width: 40ch; }
+  .contact-info div { margin-bottom: 0.9rem; font-size: 0.98rem; }
+  .contact-info span { display: block; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.72rem;
+                        color: rgba(255,255,255,0.55); margin-bottom: 0.2rem; }
+  .map-embed { border-radius: 6px; overflow: hidden; border: 2px solid rgba(255,255,255,0.15); }
+  .map-embed iframe { width: 100%; height: 260px; border: 0; display: block; }
+
+  footer.site-foot { background: var(--ink); color: rgba(255,255,255,.6); font-size: 0.82rem; padding: 1.5rem 0; }
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="disclaimer">
+  Independent website concept created by Abdullah Yousaf — not affiliated with,
+  endorsed by, or an official site of this business.
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <span class="wordmark">A Family Chiropractic</span>
+    <nav>
+      <a href="#hours">Hours</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="call-btn" href="tel:5742551716">(574) 255-1716</a>
+  </div>
+</header>
+
+<section class="hero grain">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Mishawaka, Indiana</p>
+      <h1>Serving the <em>Michiana</em> area for over 15 years</h1>
+      <p class="lead">Family-owned chiropractic care under Dr. Bryan Glenn, D.C. — accepting new
+        patients, walk-ins welcome, conveniently located near the 100 Center.</p>
+      <div class="hero-cta">
+        <a class="btn-primary" href="tel:5742551716">Call to schedule</a>
+        <a class="btn-ghost" href="#hours">See hours</a>
+      </div>
+    </div>
+    <div class="fig">
+      <svg viewBox="0 0 24 24"><path d="M12 12.75c1.63 0 3.07.39 4.24.9 1.08.48 1.76 1.56 1.76 2.73V18H6v-1.61c0-1.18.68-2.26 1.76-2.73 1.17-.52 2.61-.91 4.24-.91zM4 13c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm1.13 1.1c-.37-.06-.74-.1-1.13-.1-.99 0-1.93.21-2.78.58A2.01 2.01 0 000 16.43V18h4.5v-1.61c0-.83.23-1.61.63-2.29zM20 13c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm4 3.43c0-.81-.48-1.53-1.22-1.85A6.95 6.95 0 0020 14c-.39 0-.76.04-1.13.1.4.68.63 1.46.63 2.29V18H24v-1.57zM12 6c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3z"/></svg>
+    </div>
+  </div>
+</section>
+
+<section class="pull">
+  <div class="wrap reveal">
+    <div class="big">Walk-ins<br>welcome.</div>
+    <p>No referral needed — call (574) 255-1716 or stop by during office hours.
+       Dr. Glenn has been adjusting patients in the Michiana area for over
+       two decades, right here in Mishawaka.</p>
+  </div>
+</section>
+
+<section class="hours-sec" id="hours">
+  <div class="wrap reveal">
+    <h2>Office hours</h2>
+    <p class="sub">Weekend appointments available by emergency only.</p>
+    <table class="hours">
+      <tr><td>Monday</td><td>8 AM–12 PM, 1 PM–6 PM</td></tr>
+      <tr><td>Tuesday</td><td>2 PM–6 PM</td></tr>
+      <tr><td>Wednesday</td><td>8 AM–11 AM, 4 PM–7 PM</td></tr>
+      <tr><td>Thursday</td><td>8 AM–12 PM, 1 PM–5:30 PM</td></tr>
+      <tr><td>Friday</td><td>8 AM–12 PM, 1 PM–5 PM</td></tr>
+      <tr><td>Weekends</td><td>Emergency appointment only</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="about-sec" id="about">
+  <div class="wrap">
+    <div class="doc-card reveal">
+      <h3>Bryan Glenn, D.C.</h3>
+      <p class="role">Palmer College of Chiropractic, Davenport, Iowa</p>
+      <p>Graduated over 20 years ago and has practiced in the Michiana area
+         ever since. Conveniently located near the 100 Center and Hacienda
+         in Mishawaka, on the south side of Lincoln Way West — the building
+         is handicapped accessible.</p>
+    </div>
+    <div class="techniques reveal">
+      <h2>Adjustment techniques</h2>
+      <ul class="tech-list">
+        <li><div><strong>Palmer Package</strong><span>The foundational technique taught at Palmer College.</span></div></li>
+        <li><div><strong>Gonstead</strong><span>Traditional manual adjusting method.</span></div></li>
+        <li><div><strong>Activator Technique</strong><span>Instrument-assisted, very low-force adjusting.</span></div></li>
+        <li><div><strong>Thompson Drop</strong><span>Another low-force adjustment method.</span></div></li>
+        <li><div><strong>Extremity techniques</strong><span>Targeted work beyond the spine.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="services-sec">
+  <div class="wrap">
+    <div class="reveal">
+      <h3>Additional care</h3>
+      <ul class="plain-list">
+        <li>Deep tissue ultrasound</li>
+        <li>Electrical muscle stimulation</li>
+        <li>Thera-band exercise station</li>
+        <li>Guidance on daily activities that may be affecting you physically</li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <h3>Insurance accepted</h3>
+      <ul class="plain-list">
+        <li>Anthem</li>
+        <li>PHCS</li>
+        <li>CIGNA</li>
+        <li>Medicare &amp; Railroad Medicare</li>
+        <li>Humana</li>
+        <li>Reasonable cash-pay rates also available</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="contact-sec" id="contact">
+  <div class="wrap">
+    <div class="reveal">
+      <h2>Get in touch</h2>
+      <p>Accepting new patients now. Call, email, or find us on Facebook.</p>
+      <div class="contact-info">
+        <div><span>Address</span>535 Lincoln Way West, Mishawaka, IN 46544</div>
+        <div><span>Phone</span>(574) 255-1716</div>
+        <div><span>Fax</span>(574) 255-5379</div>
+        <div><span>Email</span>AFamilyChiro@gmail.com</div>
+      </div>
+    </div>
+    <div class="map-embed reveal">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1490.3769886288273!2d-86.18852154176325!3d41.661057298662925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8816cdcdb19e1993%3A0x28f220a72b2c1d49!2s535+Lincolnway+W%2C+Mishawaka%2C+IN+46544!5e0!3m2!1sen!2sus!4v1444786978845" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <p>A Family Chiropractic Center — 535 Lincoln Way West, Mishawaka, IN 46544</p>
+    <p style="margin-top:0.4rem">Independent concept by Abdullah Yousaf · Not the official website of this business.</p>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
