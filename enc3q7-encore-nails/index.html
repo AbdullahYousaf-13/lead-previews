@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Encore Nails Spa — website concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold:   #d3ae6a; /* verified: real hex on their page */
+    --cream:  #f9e8ad; /* verified: real hex on their page */
+    --ink:    #26221c;
+    --muted:  #6b6459;
+    --blush:  #fbf7ef;
+    --font-display: 'Cormorant', Georgia, serif;
+    --font-body: 'Manrope', -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); color: var(--ink); background: var(--blush); line-height: 1.65; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+
+  .disclaimer { background: #fdf3e0; color: #6b4f10; font-size: 0.82rem;
+                text-align: center; padding: 0.55rem 1rem; }
+
+  header.top { padding: 1.5rem 0; }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .wordmark { font-family: var(--font-display); font-weight: 600; font-style: italic; font-size: 1.6rem; }
+  header.top nav { display: flex; gap: 1.75rem; font-size: 0.86rem; }
+  header.top nav a { text-decoration: none; color: var(--muted); }
+  .call-btn { background: var(--gold); color: #fff; padding: 0.55rem 1.2rem; border-radius: 999px; text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+
+  /* HERO - centered, elegant, soft gold gradient */
+  .hero { padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(2.5rem, 6vw, 4rem); text-align: center;
+           background: linear-gradient(180deg, var(--cream) 0%, var(--blush) 100%); }
+  .hero .wrap { max-width: 700px; }
+  .hero .eyebrow { font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; font-weight: 600; }
+  .hero h1 { font-family: var(--font-display); font-weight: 500; font-style: italic; font-size: clamp(2.4rem, 6vw, 4rem);
+             line-height: 1.1; margin-bottom: 1.25rem; }
+  .hero p.lead { font-size: 1.05rem; color: var(--muted); max-width: 46ch; margin: 0 auto 2rem; }
+  .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--ink); color: #fff; padding: 0.8rem 1.75rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+  .btn-ghost { border: 1.5px solid var(--gold); color: var(--ink); padding: 0.77rem 1.65rem; border-radius: 999px; text-decoration: none; font-size: 0.9rem; }
+
+  /* EDITORIAL PULL */
+  .pull { padding: clamp(2.5rem, 6vw, 4rem) 0; text-align: center; border-top: 1px solid rgba(38,34,28,0.08); border-bottom: 1px solid rgba(38,34,28,0.08); }
+  .pull .big { font-family: var(--font-display); font-weight: 500; font-style: italic; font-size: clamp(2.4rem, 7vw, 4.5rem); color: var(--gold); }
+
+  /* SERVICES - plain list, alternating alignment */
+  .services-sec { padding: clamp(3.5rem, 7vw, 5rem) 0; }
+  .services-sec h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.9rem, 4vw, 2.6rem); text-align: center; margin-bottom: 2.5rem; }
+  .svc-row { display: flex; justify-content: space-between; align-items: baseline; padding: 1rem 0;
+             border-bottom: 1px dotted rgba(38,34,28,0.25); max-width: 600px; margin: 0 auto; }
+  .svc-row .name { font-family: var(--font-display); font-size: 1.3rem; font-style: italic; }
+  .svc-row .tag { color: var(--muted); font-size: 0.85rem; }
+
+  /* TESTIMONIALS - full quote, one at a time, not a card grid */
+  .testimonial-sec { background: var(--ink); color: #fff; padding: clamp(3.5rem, 7vw, 5.5rem) 0; }
+  .testimonial-sec .wrap { max-width: 680px; text-align: center; }
+  .t-mark { font-family: var(--font-display); font-size: 3.5rem; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; }
+  .t-text { font-family: var(--font-display); font-style: italic; font-size: clamp(1.3rem, 3vw, 1.7rem);
+            line-height: 1.5; margin-bottom: 2rem; color: #f5efe0; }
+  .t-set { display: none; }
+  .t-set.active { display: block; }
+  .t-dots { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem; }
+  .t-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3); }
+
+  /* about */
+  .about-sec { padding: clamp(3.5rem, 7vw, 5rem) 0; text-align: center; }
+  .about-sec .wrap { max-width: 640px; }
+  .about-sec h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.9rem, 4vw, 2.6rem); margin-bottom: 1.25rem; }
+  .about-sec p { color: var(--muted); font-size: 1rem; }
+
+  .contact-sec { background: var(--cream); padding: clamp(3rem, 6vw, 4.5rem) 0; text-align: center; }
+  .contact-sec h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 1rem; }
+  .contact-sec p { color: var(--muted); }
+
+  footer.site-foot { background: #1c1914; color: rgba(255,255,255,.55); font-size: 0.82rem; padding: 1.5rem 0; }
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="disclaimer">
+  Independent website concept created by Abdullah Yousaf — not affiliated with,
+  endorsed by, or an official site of this business.
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <span class="wordmark">Encore Nails Spa</span>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="call-btn" href="tel:9047477979">904-747-7979</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap reveal">
+    <p class="eyebrow">Middleburg, Florida</p>
+    <h1>Rejuvenate your nails,<br>refresh your soul.</h1>
+    <p class="lead">Each manicure and pedicure customized to your style,
+      using only high-quality, health-conscious products.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="tel:9047477979">Book an Appointment</a>
+      <a class="btn-ghost" href="#services">See Services</a>
+    </div>
+  </div>
+</section>
+
+<section class="pull">
+  <div class="wrap reveal">
+    <div class="big">An experience,<br>not just a service.</div>
+  </div>
+</section>
+
+<section class="services-sec" id="services">
+  <div class="wrap">
+    <h2 class="reveal">Our Services</h2>
+    <div class="reveal">
+      <div class="svc-row"><span class="name">Gel Manicure</span><span class="tag">Hands</span></div>
+      <div class="svc-row"><span class="name">Dipping Powder</span><span class="tag">Hands</span></div>
+      <div class="svc-row"><span class="name">Organic Pedicure</span><span class="tag">Feet</span></div>
+      <div class="svc-row"><span class="name">Acrylic</span><span class="tag">Hands</span></div>
+      <div class="svc-row"><span class="name">Facial</span><span class="tag">Skin</span></div>
+      <div class="svc-row"><span class="name">Eyelash</span><span class="tag">Lashes</span></div>
+      <div class="svc-row"><span class="name">Waxing</span><span class="tag">Personal Service</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-sec">
+  <div class="wrap reveal">
+    <div class="t-mark">"</div>
+    <p class="t-text">This place is beautiful. The outside, the inside, staff
+      communication is all on point! The staff is very friendly, informative
+      and patient.</p>
+    <p class="t-text" style="font-size:1.1rem; opacity:0.7;">The ambiance as soon as you enter puts you at ease
+      immediately. The staff is so sweet and generous and the services they
+      offer are to die for!</p>
+  </div>
+</section>
+
+<section class="about-sec" id="about">
+  <div class="wrap reveal">
+    <h2>Local, by design</h2>
+    <p>"The wonderful services you offer locally are great for our
+       community. People are tired of having to travel out of town for
+       things" — one of the reasons Encore exists right here in Middleburg.</p>
+  </div>
+</section>
+
+<section class="contact-sec" id="contact">
+  <div class="wrap reveal">
+    <h2>Ready to book?</h2>
+    <p>Call 904-747-7979 — Middleburg, FL</p>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <p>Encore Nails Spa — Middleburg, FL</p>
+    <p style="margin-top:0.4rem">Independent concept by Abdullah Yousaf · Not the official website of this business.</p>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

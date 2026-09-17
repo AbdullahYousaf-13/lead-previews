@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ATR Roofing — website concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue:   #2ea3f2; /* verified: real CSS hex on their homepage */
+    --copper: #b56a2a; /* verified: real CSS hex on their homepage */
+    --ink:    #0a0e12; /* verified: real CSS hex on their homepage */
+    --cream:  #f5f2ec; /* verified: real CSS hex on their homepage */
+    --muted:  #5d6268; /* verified: real CSS hex on their homepage */
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Work Sans', -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); color: var(--ink); background: var(--cream); line-height: 1.65; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+
+  .disclaimer { background: #eef6fa; color: #0d5068; font-size: 0.82rem;
+                text-align: center; padding: 0.55rem 1rem; }
+
+  header.top { padding: 1.5rem 0; border-bottom: 1px solid rgba(10,14,18,0.1); }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  .wordmark { font-family: var(--font-display); font-weight: 600; font-size: 1.5rem; letter-spacing: 0.02em; }
+  header.top nav { display: flex; gap: 1.75rem; font-size: 0.88rem; }
+  header.top nav a { text-decoration: none; color: var(--muted); }
+  .call-btn { background: var(--ink); color: #fff; padding: 0.55rem 1.2rem; font-size: 0.85rem; text-decoration: none; }
+
+  /* HERO - full-bleed dark, architectural/premium feel */
+  .hero { background: var(--ink); color: #fff; padding: clamp(4rem, 9vw, 7rem) 0; text-align: center; position: relative; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; opacity: 0.06; pointer-events: none;
+    background-image: repeating-linear-gradient(115deg, transparent, transparent 58px, var(--copper) 58px, var(--copper) 60px);
+  }
+  .hero .wrap { position: relative; max-width: 760px; }
+  .hero .eyebrow { font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue); margin-bottom: 1rem; }
+  .hero h1 { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.6rem, 6vw, 4.4rem);
+             line-height: 1.05; margin-bottom: 1.5rem; }
+  .hero h1 em { font-style: italic; color: var(--copper); }
+  .hero p.lead { font-size: 1.05rem; color: rgba(255,255,255,0.65); max-width: 48ch; margin: 0 auto 2.25rem; }
+  .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--blue); color: var(--ink); padding: 0.85rem 1.75rem; text-decoration: none; font-weight: 600; font-size: 0.92rem; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 0.82rem 1.7rem; text-decoration: none; font-size: 0.92rem; }
+
+  /* TWO-STATE STRIP */
+  .states-strip { background: var(--blue); color: var(--ink); padding: 0.9rem 0; text-align: center;
+                  font-size: 0.85rem; font-weight: 600; letter-spacing: 0.03em; }
+
+  /* MATERIALS - editorial list, not a card grid */
+  .materials-sec { padding: clamp(3.5rem, 7vw, 5.5rem) 0; }
+  .materials-sec .head { max-width: 620px; margin: 0 auto 3rem; text-align: center; }
+  .materials-sec h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 0.75rem; }
+  .materials-sec .head p { color: var(--muted); }
+  .material-row { display: grid; grid-template-columns: 1fr 3fr; gap: 2rem; align-items: baseline;
+                  padding: 1.5rem 0; border-top: 1px solid rgba(10,14,18,0.12); }
+  .material-row:last-child { border-bottom: 1px solid rgba(10,14,18,0.12); }
+  @media (max-width: 640px) { .material-row { grid-template-columns: 1fr; gap: 0.4rem; } }
+  .material-row .num { font-family: var(--font-display); font-size: 1.6rem; color: var(--copper); }
+  .material-row h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.5rem; }
+
+  /* EDITORIAL PULL */
+  .pull { background: var(--ink); color: #fff; padding: clamp(3rem, 7vw, 5rem) 0; text-align: center; }
+  .pull .big { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: clamp(2.4rem, 6vw, 4rem); color: var(--blue); }
+  .pull p { max-width: 46ch; margin: 1.25rem auto 0; color: rgba(255,255,255,0.65); }
+
+  /* PROCESS - numbered, asymmetric */
+  .process-sec { padding: clamp(3.5rem, 7vw, 5.5rem) 0; }
+  .process-sec .wrap { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3rem; align-items: start; }
+  @media (max-width: 760px) { .process-sec .wrap { grid-template-columns: 1fr; } }
+  .process-sec h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.9rem, 4vw, 2.6rem); }
+  .process-list { counter-reset: p; list-style: none; }
+  .process-list li { counter-increment: p; display: flex; gap: 1.5rem; padding: 1.25rem 0; }
+  .process-list li::before { content: counter(p); font-family: var(--font-display); font-size: 2rem;
+                              color: var(--copper); flex-shrink: 0; width: 2.5rem; }
+  .process-list strong { display: block; margin-bottom: 0.2rem; }
+  .process-list span { color: var(--muted); font-size: 0.94rem; }
+
+  /* SERVICE AREA */
+  .area-sec { background: var(--cream); border-top: 1px solid rgba(10,14,18,0.1); padding: clamp(3rem, 6vw, 4.5rem) 0; text-align: center; }
+  .area-sec h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.6rem; margin-bottom: 1.5rem; }
+  .area-cards { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+  .area-card { border: 1px solid rgba(10,14,18,0.15); padding: 1.5rem 2rem; min-width: 220px; }
+  .area-card .loc { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .area-card .ph { color: var(--copper); font-weight: 600; }
+  .area-card .note { color: var(--muted); font-size: 0.85rem; margin-top: 0.4rem; }
+
+  /* CONTACT */
+  .contact-sec { background: var(--ink); color: #fff; padding: clamp(3rem, 7vw, 5rem) 0; text-align: center; }
+  .contact-sec h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 1rem; color: var(--blue); }
+  .contact-sec p { color: rgba(255,255,255,0.6); }
+
+  footer.site-foot { background: #060809; color: rgba(255,255,255,.5); font-size: 0.82rem; padding: 1.5rem 0; }
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="disclaimer">
+  Independent website concept created by Abdullah Yousaf — not affiliated with,
+  endorsed by, or an official site of this business.
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <span class="wordmark">ATR Roofing</span>
+    <nav>
+      <a href="#materials">Materials</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="call-btn" href="tel:3174601191">317-460-1191</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap reveal">
+    <p class="eyebrow">Indiana &amp; Nashville, Tennessee</p>
+    <h1>Specialty roofing for homes<br>where the <em>roof matters.</em></h1>
+    <p class="lead">Slate, tile, cedar shake, metal, copper, and designer
+      asphalt — founder-led inspections and in-house installation across
+      two states.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="tel:3174601191">Request a Free Inspection</a>
+      <a class="btn-ghost" href="#materials">See Materials</a>
+    </div>
+  </div>
+</section>
+
+<div class="states-strip">ONE TEAM · TWO STATES · ATR ROOFING</div>
+
+<section class="materials-sec" id="materials">
+  <div class="wrap">
+    <div class="head reveal">
+      <h2>Materials that reward a closer look</h2>
+      <p>Not every roof calls for asphalt shingles. ATR works in the
+        materials that actually suit a property.</p>
+    </div>
+    <div class="material-row reveal"><span class="num">01</span><h3>Slate</h3></div>
+    <div class="material-row reveal"><span class="num">02</span><h3>Tile</h3></div>
+    <div class="material-row reveal"><span class="num">03</span><h3>Cedar Shake</h3></div>
+    <div class="material-row reveal"><span class="num">04</span><h3>Metal</h3></div>
+    <div class="material-row reveal"><span class="num">05</span><h3>Copper Details</h3></div>
+    <div class="material-row reveal"><span class="num">06</span><h3>Designer Asphalt</h3></div>
+  </div>
+</section>
+
+<section class="pull">
+  <div class="wrap reveal">
+    <div class="big">A 27-point inspection.<br>Before a single quote.</div>
+    <p>Appointments happen at the property — the roof, the materials, and
+       the priorities get reviewed in person before anything is proposed.</p>
+  </div>
+</section>
+
+<section class="process-sec" id="process">
+  <div class="wrap">
+    <h2 class="reveal">How a project actually starts</h2>
+    <ol class="process-list reveal">
+      <li><div><strong>Tell us what you've noticed</strong><span>What you want to achieve, in your own words.</span></div></li>
+      <li><div><strong>We review the property</strong><span>Location, roof type, and project needs — before scheduling anything.</span></div></li>
+      <li><div><strong>An appointment, in person</strong><span>At your property — not a phone estimate.</span></div></li>
+      <li><div><strong>A clear proposal</strong><span>Materials, work included, schedule, and warranty terms spelled out.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="area-sec">
+  <div class="wrap reveal">
+    <h3>Serving two states, in person</h3>
+    <div class="area-cards">
+      <div class="area-card">
+        <div class="loc">Indiana</div>
+        <div class="ph">317-460-1191</div>
+      </div>
+      <div class="area-card">
+        <div class="loc">Nashville, Tennessee</div>
+        <div class="ph">615-557-7995</div>
+        <div class="note">By appointment — no public walk-in office</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-sec" id="contact">
+  <div class="wrap reveal">
+    <h2>Start with your property</h2>
+    <p>Request a free inspection — Indiana or Nashville, TN.</p>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <p>ATR Roofing — Serving Indiana &amp; Nashville, Tennessee</p>
+    <p style="margin-top:0.4rem">Independent concept by Abdullah Yousaf · Not the official website of this business.</p>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
