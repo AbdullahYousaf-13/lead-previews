@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>MC 1 Plumbing — website concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --olive:  #3d4e2d; /* verified: their real CSS --olive value */
+    --olive-d:#2a3520; /* verified: their real CSS --olive-dark value */
+    --tan:    #c9b788; /* verified: their real CSS --tan value */
+    --bark:   #2a1f14; /* verified: their real CSS --bark value */
+    --bone:   #f5f1e8; /* verified: their real CSS --bone value */
+    --ink:    #1a1a1a;
+    --muted:  #5c5c56;
+    --font-display: 'Bebas Neue', Impact, sans-serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); color: var(--ink); background: var(--bone); line-height: 1.6; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+
+  .disclaimer { background: #fff2c7; color: #5c4a00; font-size: 0.82rem;
+                text-align: center; padding: 0.55rem 1rem; }
+
+  /* camo-inspired blotch pattern - the one motif, used once, very low opacity */
+  .camo-bg { position: relative; overflow: hidden; }
+  .camo-bg::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.07; z-index: 0;
+    background-image:
+      radial-gradient(ellipse 120px 80px at 10% 20%, var(--tan) 0%, transparent 70%),
+      radial-gradient(ellipse 160px 100px at 80% 60%, var(--olive) 0%, transparent 70%),
+      radial-gradient(ellipse 100px 140px at 40% 90%, var(--bark) 0%, transparent 70%),
+      radial-gradient(ellipse 140px 90px at 60% 10%, var(--tan) 0%, transparent 70%);
+  }
+  .camo-bg > * { position: relative; z-index: 1; }
+
+  header.top { background: var(--bark); padding: 0.9rem 0; }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+  .wordmark { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: 0.03em; color: var(--tan); }
+  header.top nav { display: flex; gap: 1.5rem; font-size: 0.88rem; }
+  header.top nav a { text-decoration: none; color: rgba(255,255,255,0.75); }
+  header.top nav a:hover { color: var(--tan); }
+  .call-btn { background: var(--olive); color: #fff; padding: 0.5rem 1.1rem; border-radius: 3px;
+              text-decoration: none; font-size: 0.86rem; font-weight: 600; }
+
+  .cred-bar { background: var(--olive); color: #fff; text-align: center; font-size: 0.78rem;
+              font-weight: 600; padding: 0.5rem 1rem; letter-spacing: 0.02em; }
+  .cred-bar .sep { opacity: 0.5; margin: 0 0.6rem; }
+
+  /* HERO */
+  .hero { padding: clamp(3.5rem, 8vw, 6rem) 0 clamp(3rem, 6vw, 4.5rem); background: var(--bone); }
+  .hero .wrap { text-align: center; max-width: 780px; }
+  .hero .eyebrow { font-family: var(--font-display); letter-spacing: 0.1em; color: var(--olive);
+                   font-size: 1rem; margin-bottom: 0.75rem; }
+  .hero h1 { font-family: var(--font-display); font-size: clamp(2.8rem, 8vw, 5.2rem); line-height: 0.95;
+             color: var(--ink); margin-bottom: 1.25rem; }
+  .hero h1 span { color: var(--olive); }
+  .hero p.lead { font-size: 1.1rem; color: var(--muted); max-width: 52ch; margin: 0 auto 2rem; }
+  .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--olive); color: #fff; padding: 0.85rem 1.75rem; border-radius: 999px;
+                 text-decoration: none; font-weight: 700; font-size: 0.95rem; }
+  .btn-ghost { border: 1.5px solid var(--olive); color: var(--olive); padding: 0.82rem 1.65rem;
+               border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+
+  /* CREDENTIALS STRIP - checklist not cards */
+  .creds { background: var(--bark); color: #fff; padding: clamp(2.5rem, 5vw, 3.5rem) 0; }
+  .creds .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem 3rem; }
+  @media (max-width: 700px) { .creds .wrap { grid-template-columns: 1fr; } }
+  .cred-item { display: flex; gap: 0.75rem; padding: 0.7rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .cred-item::before { content: "✓"; color: var(--tan); font-weight: 900; flex-shrink: 0; }
+  .cred-item span { color: rgba(255,255,255,0.85); font-size: 0.95rem; }
+  .cred-item strong { color: #fff; }
+
+  /* EDITORIAL PULL - the one oversized typographic moment */
+  .pull { padding: clamp(3rem, 7vw, 5rem) 0; text-align: center; }
+  .pull .big { font-family: var(--font-display); font-size: clamp(2.8rem, 8vw, 5.5rem); color: var(--bark);
+               line-height: 0.95; }
+  .pull .big em { font-style: normal; color: var(--olive); }
+  .pull p { max-width: 48ch; margin: 1rem auto 0; color: var(--muted); font-size: 1.02rem; }
+
+  /* FOUNDER SECTION - asymmetric */
+  .founder-sec { background: #fff; padding: clamp(3rem, 6vw, 4.5rem) 0; }
+  .founder-sec .wrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 3rem; align-items: start; }
+  @media (max-width: 760px) { .founder-sec .wrap { grid-template-columns: 1fr; } }
+  .founder-card { background: var(--olive); color: #fff; border-radius: 8px; padding: 2rem; }
+  .founder-card .label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--tan); margin-bottom: 0.5rem; }
+  .founder-card h3 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 0.25rem; }
+  .founder-card .role { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 1rem; }
+  .founder-card p { font-size: 0.92rem; color: rgba(255,255,255,0.85); }
+  .founder-text h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.4rem); color: var(--ink); margin-bottom: 1rem; }
+  .founder-text p { color: var(--muted); font-size: 0.98rem; margin-bottom: 1rem; }
+  .founder-text .tagline { font-family: var(--font-display); font-size: 1.4rem; color: var(--olive); }
+
+  /* TEAM ROW - Jacqueline + Bear, plain, distinct from founder card */
+  .team-sec { background: var(--bone); padding: clamp(2.5rem, 5vw, 4rem) 0; }
+  .team-sec .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  @media (max-width: 700px) { .team-sec .wrap { grid-template-columns: 1fr; } }
+  .team-item { border-top: 3px solid var(--tan); padding-top: 1.25rem; }
+  .team-item h4 { font-family: var(--font-display); font-size: 1.4rem; color: var(--bark); }
+  .team-item .role { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--olive); margin: 0.2rem 0 0.75rem; font-weight: 600; }
+  .team-item p { color: var(--muted); font-size: 0.92rem; }
+  .team-item .quote { font-style: italic; color: var(--olive); margin-top: 0.6rem; font-size: 0.9rem; }
+
+  /* SERVICES - numbered list */
+  .services-sec { padding: clamp(3rem, 6vw, 4.5rem) 0; }
+  .services-sec h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 1.75rem; text-align: center; }
+  .svc-list { counter-reset: s; list-style: none; max-width: 640px; margin: 0 auto; }
+  .svc-list li { counter-increment: s; display: flex; gap: 1.25rem; padding: 1rem 0; border-top: 1px solid #e0ddd2; }
+  .svc-list li:last-child { border-bottom: 1px solid #e0ddd2; }
+  .svc-list li::before { content: counter(s, decimal-leading-zero); font-family: var(--font-display);
+                          font-size: 1.3rem; color: var(--olive); flex-shrink: 0; width: 2.5rem; }
+  .svc-list strong { font-size: 1rem; }
+
+  /* SERVICE AREAS - tags */
+  .areas-sec { background: var(--olive); color: #fff; padding: clamp(2.5rem, 5vw, 3.5rem) 0; text-align: center; }
+  .areas-sec h3 { font-family: var(--font-display); font-size: 1.6rem; margin-bottom: 1.25rem; color: var(--tan); }
+  .area-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+  .area-tags span { background: rgba(255,255,255,0.12); border-radius: 999px; padding: 0.4rem 1rem; font-size: 0.85rem; }
+
+  /* CONTACT */
+  .contact-sec { background: var(--bark); color: #fff; padding: clamp(3rem, 7vw, 5rem) 0; }
+  .contact-sec .wrap { text-align: center; }
+  .contact-sec h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--tan); margin-bottom: 1rem; }
+  .contact-sec p { color: rgba(255,255,255,0.75); margin-bottom: 1.5rem; }
+  .contact-row { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; font-size: 0.95rem; }
+
+  footer.site-foot { background: #16110b; color: rgba(255,255,255,.55); font-size: 0.82rem; padding: 1.5rem 0; }
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="disclaimer">
+  Independent website concept created by Abdullah Yousaf — not affiliated with,
+  endorsed by, or an official site of this business.
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <span class="wordmark">MC 1 PLUMBING</span>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="call-btn" href="tel:+12105009085">210-500-9085</a>
+  </div>
+</header>
+
+<div class="cred-bar">
+  Veteran-Owned &amp; Operated <span class="sep">|</span> License RMP M-43246 <span class="sep">|</span> TCEQ BPO025263 <span class="sep">|</span> 30 Years Experience
+</div>
+
+<section class="hero camo-bg">
+  <div class="wrap reveal">
+    <p class="eyebrow">SAN ANTONIO, TEXAS</p>
+    <h1>Putting <span>service</span> back<br>into service plumbing</h1>
+    <p class="lead">A veteran-owned, family-run plumbing company — no subcontractors,
+      no rotating crews. When you call MC 1, you're hiring Daniel, not a franchise.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="tel:+12105009085">Call or Text 210-500-9085</a>
+      <a class="btn-ghost" href="#services">See Services</a>
+    </div>
+  </div>
+</section>
+
+<section class="creds">
+  <div class="wrap reveal">
+    <div class="cred-item"><span><strong>Licensed Texas Plumber</strong> — RMP M-43246, State of Texas Responsible Master Plumber</span></div>
+    <div class="cred-item"><span><strong>TCEQ Backflow Certified</strong> — BPO025263</span></div>
+    <div class="cred-item"><span><strong>30+ Years Experience</strong> — residential and commercial across South Texas</span></div>
+    <div class="cred-item"><span><strong>Fully Licensed, Bonded &amp; Insured</strong></span></div>
+    <div class="cred-item"><span><strong>Residential &amp; Commercial</strong> — homes, businesses, restaurants</span></div>
+    <div class="cred-item"><span><strong>Backflow Preventor Specialist</strong> — repair, replacement, annual certification</span></div>
+  </div>
+</section>
+
+<section class="pull">
+  <div class="wrap reveal">
+    <div class="big">You're hiring <em>Daniel.</em><br>Not a franchise.</div>
+    <p>Every job — a leaky faucet or a full commercial install — gets the
+       same military-grade attention to detail, led personally by the owner.</p>
+  </div>
+</section>
+
+<section class="founder-sec" id="about">
+  <div class="wrap">
+    <div class="founder-card reveal">
+      <div class="label">Founder &amp; Licensed Plumber</div>
+      <h3>Daniel Windler</h3>
+      <div class="role">Owner — Veteran — Plumber</div>
+      <p>Founded MC 1 Plumbing on the idea that the discipline forged through
+         military service should carry into every job. 30+ years mastering
+         the plumbing trade in South Texas.</p>
+    </div>
+    <div class="founder-text reveal">
+      <h2>A family business, not a mega-shop</h2>
+      <p>MC 1 Plumbing isn't just family-owned — it's a family mission. From
+         the office to the field, every decision is shaped by the same
+         values: honor, discipline, and the long view. When you hire MC 1,
+         you're not hiring an overbooked chain — you're hiring a family that
+         understands your trust has to be earned.</p>
+      <p>That's why every job gets treated like it's at their own home.</p>
+      <div class="tagline">"Putting Service Back Into Service Plumbing."</div>
+    </div>
+  </div>
+</section>
+
+<section class="team-sec">
+  <div class="wrap">
+    <div class="team-item reveal">
+      <h4>Jacqueline Windler</h4>
+      <div class="role">Operations Manager</div>
+      <p>The operational heart of the business — handling scheduling, client
+         communication, and billing so Daniel can focus on the plumbing
+         itself. If you've called MC 1, you've probably talked to her.</p>
+      <div class="quote">"The Backbone of MC 1 Plumbing."</div>
+    </div>
+    <div class="team-item reveal">
+      <h4>Bear</h4>
+      <div class="role">Shop Dog &amp; Quality Control Officer</div>
+      <p>An Australian Shepherd with a sharp eye for anyone stopping by, a
+         signature MC 1 bandana, and mismatched eyes that suggest he's
+         thinking hard about something important. Mascot, morale officer,
+         and unofficial greeter, all rolled into one.</p>
+      <div class="quote">"Bear doesn't trust just any plumber… Choose wisely."</div>
+    </div>
+  </div>
+</section>
+
+<section class="services-sec" id="services">
+  <div class="wrap">
+    <h2>Eight core services</h2>
+    <ul class="svc-list">
+      <li><strong>Water Heater Installation &amp; Repair</strong></li>
+      <li><strong>Drain Cleaning &amp; Clog Removal</strong></li>
+      <li><strong>Leak Detection &amp; Repair</strong></li>
+      <li><strong>Sewer Line Services</strong></li>
+      <li><strong>Backflow Preventor Repair, Replacement &amp; Certification</strong></li>
+      <li><strong>Water Softener Installation &amp; Service</strong></li>
+      <li><strong>Bathroom &amp; Kitchen Remodel Plumbing</strong></li>
+      <li><strong>Emergency Plumbing Service</strong></li>
+    </ul>
+  </div>
+</section>
+
+<section class="areas-sec">
+  <div class="wrap reveal">
+    <h3>Serving Greater San Antonio</h3>
+    <div class="area-tags">
+      <span>San Antonio</span>
+      <span>Boerne</span>
+      <span>New Braunfels</span>
+      <span>Schertz</span>
+      <span>Seguin</span>
+      <span>Converse</span>
+    </div>
+  </div>
+</section>
+
+<section class="contact-sec" id="contact">
+  <div class="wrap reveal">
+    <h2>Ready to work with MC 1?</h2>
+    <p>Call or text Daniel directly — no runaround, no dispatcher maze.</p>
+    <div class="contact-row">
+      <span>📞 210-500-9085</span>
+      <span>✉ MC1Plumbing.csr@gmail.com</span>
+    </div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <p>MC 1 Plumbing LLC — San Antonio, TX · License RMP M-43246</p>
+    <p style="margin-top:0.4rem">Independent concept by Abdullah Yousaf · Not the official website of this business.</p>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
