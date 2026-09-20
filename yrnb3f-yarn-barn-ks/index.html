@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Yarn Barn of Kansas — creative concept</title>
+<meta name="description" content="Independent design concept for Yarn Barn of Kansas, a Lawrence, KS fiber arts shop serving knitters, weavers, spinners, and crocheters since 1971.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,900;1,500;1,600;1,900&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* No exact brand hex codes were found in the mined content (see build
+       notes) — palette chosen deliberately for a cozy, heritage fiber-arts
+       shop founded in 1971: warm mustard/gold, a deep rust-burgundy accent,
+       oatmeal/cream ground. Not a claim of sourcing. */
+    --cream:   #f2e8d5;
+    --cream-d: #e9dabb;
+    --oat:     #fbf5e8;
+    --ink:     #2c2117;
+    --ink-soft:#5a4a38;
+    --mustard: #c68a25;
+    --mustard-d:#a86f16;
+    --rust:    #8c3223;
+    --rust-d:  #6e2419;
+    --line:    #d7c39a;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Karla', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:var(--font-body); background:var(--oat); color:var(--ink); line-height:1.6; overflow-x:hidden; }
+  a{ color:inherit; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 clamp(1.25rem,4vw,3rem); }
+
+  /* grain texture for solid color blocks */
+  .grain{ position:relative; }
+  .grain::after{
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.09; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .disclaimer{ background:#fdeecb; color:#5c4310; font-size:.8rem; text-align:center; padding:.55rem 1rem; border-bottom:1px solid #e6cf98; }
+
+  /* ---- header ---- */
+  header.top{ background:var(--oat); border-bottom:1px solid var(--line); }
+  header.top .wrap{ display:flex; align-items:center; justify-content:space-between; padding:1.15rem 0; }
+  .wordmark{ display:flex; align-items:center; gap:.6rem; font-family:var(--font-display); font-weight:700; font-size:1.15rem; letter-spacing:.01em; }
+  .top nav{ display:flex; gap:1.9rem; font-weight:600; font-size:.88rem; }
+  .top nav a{ text-decoration:none; color:var(--ink-soft); }
+  .top nav a:hover{ color:var(--rust); }
+  @media (max-width:640px){ .top nav{ display:none; } }
+
+  /* ---- hero: full-bleed, oversized numeral, faint skein motif ---- */
+  .hero{ background:var(--cream); position:relative; overflow:hidden; }
+  .hero .skein-motif{
+    position:absolute; right:-6%; top:50%; transform:translateY(-50%);
+    width:min(60vw,620px); height:auto; opacity:.16; pointer-events:none;
+  }
+  .hero .wrap{ position:relative; padding:clamp(3.5rem,9vw,6rem) 0 clamp(3rem,7vw,5rem); }
+  .hero .kicker{ font-weight:700; text-transform:uppercase; letter-spacing:.18em; font-size:.78rem; color:var(--rust); margin-bottom:1.4rem; }
+  .hero .numeral{
+    font-family:var(--font-display); font-weight:900; font-style:italic; color:var(--rust);
+    font-size:clamp(5.5rem,20vw,13rem); line-height:.78; letter-spacing:-.02em; margin-bottom:.1em;
+  }
+  .hero h1{ font-family:var(--font-display); font-weight:600; font-size:clamp(1.6rem,4vw,2.6rem); max-width:20ch; line-height:1.18; color:var(--ink); }
+  .hero p.lede{ margin-top:1.3rem; max-width:52ch; font-size:1.08rem; color:var(--ink-soft); }
+  .hero .row{ display:flex; flex-wrap:wrap; align-items:center; gap:1.4rem 2.4rem; margin-top:2.4rem; }
+  .hero .cta{ display:inline-block; background:var(--rust); color:var(--oat); font-weight:700; padding:.9rem 1.9rem; text-decoration:none; font-size:.98rem; }
+  .hero .cta:hover{ background:var(--rust-d); }
+  .hero .addr{ font-size:.9rem; color:var(--ink-soft); }
+
+  /* ---- craft bands: stacked, alternating alignment, not a card grid ---- */
+  .crafts{ background:var(--oat); padding:clamp(3rem,7vw,4.5rem) 0 clamp(2rem,5vw,3rem); }
+  .crafts .intro{ border-bottom:3px solid var(--ink); padding-bottom:1.1rem; margin-bottom:.5rem; }
+  .crafts .intro h2{ font-family:var(--font-display); font-weight:700; font-size:clamp(1.5rem,3.6vw,2.1rem); }
+  .crafts .intro span{ display:block; margin-top:.5rem; color:var(--ink-soft); font-size:.98rem; max-width:46ch; }
+  .craft-band{ display:grid; grid-template-columns:1fr; gap:.4rem 2.5rem; padding:2rem 0; border-bottom:1px solid var(--line); align-items:baseline; }
+  @media (min-width:760px){ .craft-band{ grid-template-columns:1fr 1.3fr; } }
+  .craft-band .name{ font-family:var(--font-display); font-weight:900; font-style:italic; font-size:clamp(2.2rem,6vw,3.6rem); color:var(--mustard-d); line-height:.95; }
+  .craft-band p{ color:var(--ink-soft); font-size:1.02rem; max-width:52ch; }
+  .craft-band:nth-child(even){ text-align:right; }
+  .craft-band:nth-child(even) .name{ color:var(--rust); }
+  @media (min-width:760px){
+    .craft-band:nth-child(even){ text-align:right; }
+    .craft-band:nth-child(even) p{ margin-left:auto; }
+    .craft-band:nth-child(odd){ text-align:left; }
+  }
+  @media (max-width:759px){ .craft-band{ text-align:left !important; } .craft-band p{ margin-left:0 !important; } }
+
+  /* ---- heritage: asymmetric two-column with pull-quote ---- */
+  .heritage{ background:var(--rust); color:var(--oat); position:relative; }
+  .heritage .wrap{ position:relative; display:grid; grid-template-columns:1fr; gap:2.5rem; padding:clamp(3.5rem,8vw,5.5rem) 0; }
+  @media (min-width:900px){ .heritage .wrap{ grid-template-columns:0.85fr 1.15fr; align-items:start; } }
+  .heritage .tag{ font-weight:700; text-transform:uppercase; letter-spacing:.16em; font-size:.78rem; color:var(--cream-d); margin-bottom:1rem; }
+  .heritage h2{ font-family:var(--font-display); font-weight:700; font-size:clamp(1.7rem,4vw,2.4rem); line-height:1.15; }
+  .heritage .stat{ margin-top:1.8rem; font-family:var(--font-display); font-weight:900; font-style:italic; font-size:clamp(3rem,7vw,4.5rem); line-height:.85; color:var(--mustard); }
+  .heritage .stat span{ display:block; font-family:var(--font-body); font-style:normal; font-weight:600; font-size:.85rem; letter-spacing:.06em; text-transform:uppercase; color:var(--cream-d); margin-top:.6rem; }
+  .heritage blockquote{ font-family:var(--font-display); font-style:italic; font-weight:500; font-size:clamp(1.4rem,3vw,1.9rem); line-height:1.35; border-left:3px solid var(--mustard); padding-left:1.6rem; }
+  .heritage blockquote cite{ display:block; margin-top:1.1rem; font-family:var(--font-body); font-style:normal; font-weight:600; font-size:.82rem; letter-spacing:.06em; text-transform:uppercase; color:var(--cream-d); }
+  .heritage p.detail{ margin-top:1.6rem; color:rgba(251,245,232,.85); max-width:56ch; font-size:1rem; }
+
+  /* ---- shop strip: flowing text list, not pills ---- */
+  .shopstrip{ background:var(--mustard); color:var(--ink); position:relative; overflow:hidden; }
+  .shopstrip .wrap{ position:relative; padding:2.4rem 0; display:flex; flex-wrap:wrap; align-items:baseline; gap:.6rem 0; }
+  .shopstrip .label{ font-weight:700; text-transform:uppercase; letter-spacing:.14em; font-size:.78rem; margin-right:1.6rem; color:var(--ink); }
+  .shopstrip .items{ display:flex; flex-wrap:wrap; gap:.5rem 0; font-family:var(--font-display); font-style:italic; font-weight:600; font-size:clamp(1.15rem,2.6vw,1.6rem); }
+  .shopstrip .items span:not(:last-child)::after{ content:"  ·  "; font-family:var(--font-body); font-style:normal; font-weight:400; opacity:.6; }
+
+  /* ---- contact: full-bleed ---- */
+  .contact{ background:var(--ink); color:var(--oat); }
+  .contact .wrap{ padding:clamp(3.5rem,8vw,5.5rem) 0; }
+  .contact .tag{ font-weight:700; text-transform:uppercase; letter-spacing:.16em; font-size:.78rem; color:var(--mustard); margin-bottom:1rem; }
+  .contact h2{ font-family:var(--font-display); font-weight:700; font-size:clamp(1.9rem,5vw,3rem); max-width:18ch; }
+  .contact p.lead{ margin-top:1rem; font-size:1.08rem; color:rgba(251,245,232,.75); max-width:44ch; }
+  .contact .grid{ display:grid; grid-template-columns:1fr; gap:1px; background:rgba(251,245,232,.18); margin-top:2.6rem; border:1px solid rgba(251,245,232,.18); }
+  @media (min-width:700px){ .contact .grid{ grid-template-columns:repeat(3,1fr); } }
+  .contact .cell{ background:var(--ink); padding:1.4rem; }
+  .contact .cell span{ display:block; text-transform:uppercase; letter-spacing:.1em; font-size:.7rem; opacity:.65; margin-bottom:.45rem; }
+  .contact .cell a, .contact .cell div{ color:var(--oat); text-decoration:none; font-weight:700; font-size:1rem; word-break:break-word; }
+  .contact .callbtn{ display:inline-block; margin-top:2.5rem; background:var(--mustard); color:var(--ink); font-weight:700; padding:1rem 2.1rem; text-decoration:none; }
+  .contact .callbtn:hover{ background:var(--mustard-d); color:var(--oat); }
+
+  footer.site-foot{ background:#1c1610; color:rgba(251,245,232,.55); font-size:.82rem; text-align:center; padding:2rem 0; }
+
+  /* scroll reveal */
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="disclaimer">
+  Independent website concept created by Abdullah Yousaf — not affiliated with,
+  endorsed by, or an official site of this business.
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <span class="wordmark">
+      <svg width="26" height="26" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <path d="M20 4c8 5 13 9 13 15s-5 12-13 17c-8-5-13-11-13-17S12 9 20 4z" stroke="#8c3223" stroke-width="1.6" fill="none"/>
+        <path d="M9 15c6 3 8 3 22 0M8 20c7 4 17 4 24 0M9 25c6 3 8 3 22 0" stroke="#c68a25" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+      </svg>
+      Yarn Barn of Kansas
+    </span>
+    <nav>
+      <a href="#crafts">Crafts</a>
+      <a href="#heritage">Heritage</a>
+      <a href="#shop">Shop</a>
+      <a href="#visit">Visit</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero grain">
+  <svg class="skein-motif" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+    <path d="M100 10c40 26 65 46 65 90s-25 70-65 90c-40-20-65-46-65-90s25-64 65-90z" stroke="#8c3223" stroke-width="1.4"/>
+    <path d="M40 55c30 16 40 16 120 0M32 100c34 20 100 20 136 0M40 145c30 16 40 16 120 0" stroke="#8c3223" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M60 40c22 40 22 80 0 120M140 40c-22 40-22 80 0 120" stroke="#8c3223" stroke-width="1"/>
+  </svg>
+  <div class="wrap">
+    <p class="kicker">930 Massachusetts St. &middot; Lawrence, Kansas</p>
+    <div class="numeral">1971</div>
+    <h1>Spun, woven, and knit in the same storefront ever since.</h1>
+    <p class="lede">Yarn Barn of Kansas has been supplying knitting, weaving, spinning, and
+      crocheting materials since 1971 — a specialty fiber arts shop built for the long haul,
+      in a college town that's kept its needles moving for more than fifty years.</p>
+    <div class="row">
+      <a class="cta" href="tel:8004680035">Call 800-468-0035</a>
+      <span class="addr">Open on Massachusetts Street, downtown Lawrence</span>
+    </div>
+  </div>
+</section>
+
+<section class="crafts" id="crafts">
+  <div class="wrap">
+    <div class="intro reveal">
+      <h2>Four crafts, one storefront</h2>
+      <span>Everything on the shelves exists to serve one of these four practices — yarn and
+        tools chosen for people who actually make things with their hands.</span>
+    </div>
+
+    <div class="craft-band reveal">
+      <div class="name">Knitting</div>
+      <p>Two needles, one continuous strand, loop drawn through loop — sweaters, socks,
+        hats, and blankets built row by row from real yarn, not synthetic filler.</p>
+    </div>
+    <div class="craft-band reveal">
+      <div class="name">Weaving</div>
+      <p>Warp and weft cross on a loom until they lock into cloth — rugs, wall hangings,
+        and yardage, the oldest way there is to turn yarn into fabric.</p>
+    </div>
+    <div class="craft-band reveal">
+      <div class="name">Spinning</div>
+      <p>Raw fiber twisted on a wheel or a spindle into the very yarn the other three
+        crafts start with — where the material itself gets made.</p>
+    </div>
+    <div class="craft-band reveal">
+      <div class="name">Crocheting</div>
+      <p>One hook, one loop at a time — fabric built without a loom or a second needle,
+        stitch by stitch, as old as the craft it sits beside.</p>
+    </div>
+  </div>
+</section>
+
+<section class="heritage grain" id="heritage">
+  <div class="wrap">
+    <div>
+      <p class="tag reveal">Our Heritage</p>
+      <h2 class="reveal">Half a century of supplying Kansas fiber artists</h2>
+      <div class="stat reveal">55+<span>Years on Massachusetts Street</span></div>
+    </div>
+    <div class="reveal">
+      <blockquote>
+        &ldquo;Yarn Barn of Kansas has been supplying knitting, weaving, spinning, and
+        crocheting materials since 1971.&rdquo;
+        <cite>The shop's own founding line</cite>
+      </blockquote>
+      <p class="detail">More than fifty years in, the shop is still doing the same job it opened
+        to do: stocking real yarn, real looms, and real know-how for a craft community that
+        hasn't gone anywhere. In a college town built around the University of Kansas, that
+        kind of staying power is its own kind of credential — no gimmicks, just decades of
+        showing up for knitters, weavers, spinners, and crocheters.</p>
+    </div>
+  </div>
+</section>
+
+<section class="shopstrip" id="shop">
+  <div class="wrap">
+    <span class="label">In the shop</span>
+    <div class="items">
+      <span>Knitting yarns</span><span>Weaving yarns</span><span>Looms</span>
+      <span>Kits</span><span>Spinning supplies</span>
+    </div>
+  </div>
+</section>
+
+<section class="contact grain" id="visit">
+  <div class="wrap">
+    <p class="tag reveal">Visit the Barn</p>
+    <h2 class="reveal">Come see it in person, downtown Lawrence.</h2>
+    <p class="lead reveal">A specialty fiber arts shop on Massachusetts Street, stocked for
+      knitters, weavers, spinners, and crocheters alike.</p>
+    <div class="grid">
+      <div class="cell reveal"><span>Call</span><a href="tel:8004680035">800-468-0035</a></div>
+      <div class="cell reveal"><span>Email</span><a href="mailto:info@yarnbarn-ks.com">info@yarnbarn-ks.com</a></div>
+      <div class="cell reveal"><span>Visit</span><div>930 Massachusetts St., Lawrence, KS 66044</div></div>
+    </div>
+    <a class="callbtn" href="mailto:info@yarnbarn-ks.com">Email Yarn Barn of Kansas</a>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <p>Yarn Barn of Kansas — 930 Massachusetts St., Lawrence, KS 66044</p>
+    <p style="margin-top:.4rem">Independent concept by Abdullah Yousaf &middot; Not the official website of this business.</p>
+  </div>
+</footer>
+
+<script>
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+
+</body>
+</html>

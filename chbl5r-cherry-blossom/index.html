@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Cherry Blossom Florist — creative concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Color: no hex/logo was extracted from the real site (Teleflora/eFlorist
+     storefront, thin on brand assets) — per the color rule this is a
+     deliberate, honest choice tied to the business's own name, not a
+     claim of scraped brand color. Blush pink + deep rose + sage + warm
+     cream, chosen because they are a florist literally named for the
+     cherry blossom flower. */
+  :root {
+    --blush:   #f3dde2;
+    --blush-d: #ecc9d1;
+    --rose:    #9c3255;
+    --rose-d:  #7d2644;
+    --sage:    #7c8f6e;
+    --sage-d:  #5f7053;
+    --cream:   #faf4ea;
+    --ink:     #38242b;
+    --muted:   #7a6660;
+    --line:    #e4cfc9;
+    --font-display: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+    --font-body: 'Jost', -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); color: var(--ink); background: var(--cream); line-height: 1.6; font-weight: 300; }
+  a { color: inherit; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 3.5rem); }
+
+  .disclaimer { background: #f6e9c9; color: #5c4a1b; font-size: 0.8rem;
+                text-align: center; padding: 0.6rem 1rem; font-family: var(--font-body); }
+
+  /* subtle grain so solid color blocks don't read as flat vector fills */
+  .grain { position: relative; }
+  .grain::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .055;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  /* ===== header ===== */
+  header.top { background: var(--cream); border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; padding: 1.35rem 0; }
+  .wordmark { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600;
+              display: flex; align-items: center; gap: 0.6rem; letter-spacing: 0.01em; color: var(--rose-d); }
+  .wordmark svg { flex: none; }
+  .top nav { display: flex; gap: 2rem; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .top nav a { text-decoration: none; color: var(--muted); }
+  .top nav a:hover { color: var(--rose); }
+  @media (max-width: 620px) { .top nav { display: none; } }
+
+  /* ===== hero: full-bleed, editorial type moment ===== */
+  .hero { background: linear-gradient(180deg, var(--blush) 0%, var(--blush-d) 100%);
+          position: relative; overflow: hidden; }
+  .hero .branch-art { position: absolute; top: -4%; right: -6%; width: min(60vw, 620px); opacity: .16;
+                       pointer-events: none; }
+  .hero .wrap { position: relative; padding: clamp(3.5rem, 9vw, 6rem) 0 clamp(3.5rem, 8vw, 5.5rem); }
+  .hero .kicker { font-size: 0.78rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--sage-d);
+                  font-weight: 500; margin-bottom: 1.6rem; }
+  .hero .lead { font-family: var(--font-display); font-style: italic; font-weight: 400;
+                font-size: clamp(1.35rem, 3vw, 1.9rem); color: var(--ink); max-width: 24ch; }
+  .hero .big { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.01em;
+               font-size: clamp(4rem, 17vw, 10.5rem); line-height: 0.85; color: var(--rose-d);
+               margin-top: 0.05em; }
+  .hero .sub { max-width: 46ch; margin-top: 1.75rem; font-size: 1.02rem; color: var(--muted); }
+  .hero .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem 2.25rem; align-items: center; margin-top: 2.5rem; }
+  .hero .cta { display: inline-block; background: var(--rose-d); color: #fff; font-family: var(--font-body);
+               font-weight: 500; font-size: 0.92rem; letter-spacing: 0.03em; padding: 0.95rem 2rem;
+               text-decoration: none; }
+  .hero .cta:hover { background: var(--rose); }
+  .hero .phone-link { font-size: 0.95rem; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--rose-d); }
+
+  /* ===== occasions: asymmetric editorial list, not a card grid ===== */
+  .occasions { padding: clamp(4rem, 9vw, 6.5rem) 0 clamp(2rem, 6vw, 3rem); }
+  .occasions .head { max-width: 56ch; margin-bottom: clamp(2.5rem, 6vw, 4rem); }
+  .occasions .head .kicker { font-size: 0.78rem; letter-spacing: 0.24em; text-transform: uppercase;
+                              color: var(--sage-d); font-weight: 500; margin-bottom: 0.9rem; }
+  .occasions h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.9rem, 4.5vw, 2.9rem);
+                  color: var(--ink); }
+  .occ-row { display: flex; align-items: flex-start; gap: clamp(1.5rem, 5vw, 4rem);
+             padding: clamp(2rem, 5vw, 2.75rem) 0; border-top: 1px solid var(--line); }
+  .occ-row:last-child { border-bottom: 1px solid var(--line); }
+  .occ-row .num { font-family: var(--font-display); font-style: italic; font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+                  color: var(--blush-d); flex: none; width: 3ch; }
+  .occ-row .occ-body { max-width: 46ch; }
+  .occ-row h3 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem, 3.5vw, 2.05rem);
+                color: var(--rose-d); }
+  .occ-row p { margin-top: 0.5rem; color: var(--muted); font-size: 0.98rem; }
+  .occ-row.right { flex-direction: row-reverse; text-align: right; margin-left: auto; }
+  .occ-row.right .occ-body { margin-left: auto; }
+  @media (max-width: 640px) {
+    .occ-row, .occ-row.right { flex-direction: row; text-align: left; }
+    .occ-row.right .occ-body { margin-left: 0; }
+  }
+
+  /* ===== arrangements: seasonal-menu style text list ===== */
+  .menu { background: var(--sage); color: var(--cream); position: relative; overflow: hidden; }
+  .menu .wrap { padding: clamp(4rem, 9vw, 6rem) 0; position: relative; }
+  .menu .head { max-width: 60ch; margin-bottom: clamp(2.25rem, 5vw, 3.25rem); }
+  .menu .kicker { font-size: 0.78rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--blush);
+                  font-weight: 500; margin-bottom: 0.9rem; }
+  .menu h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.9rem, 4.5vw, 2.8rem); }
+  .menu p.note { margin-top: 0.9rem; color: rgba(250,244,234,.78); font-size: 0.95rem; max-width: 48ch; }
+  .menu-list { margin-top: 0.5rem; }
+  .menu-item { display: flex; align-items: baseline; gap: 0.6rem; padding: 0.95rem 0;
+               border-bottom: 1px solid rgba(250,244,234,.22); }
+  .menu-item .name { font-family: var(--font-display); font-style: italic; font-weight: 500;
+                      font-size: clamp(1.05rem, 2.2vw, 1.3rem); white-space: nowrap; }
+  .menu-item .leader { flex: 1; border-bottom: 1px dotted rgba(250,244,234,.4); transform: translateY(-0.35em); }
+  .menu-item .price { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
+                       color: rgba(250,244,234,.72); white-space: nowrap; }
+
+  /* ===== delivery strip: plain text band ===== */
+  .delivery { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .delivery .wrap { padding: clamp(2.25rem, 5vw, 3rem) 0; display: flex; flex-wrap: wrap;
+                     align-items: center; justify-content: space-between; gap: 1rem 2.5rem; }
+  .delivery .label { font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage-d);
+                      font-weight: 500; }
+  .delivery p { font-family: var(--font-display); font-size: clamp(1.1rem, 2.6vw, 1.45rem); color: var(--ink);
+                max-width: 52ch; }
+
+  /* ===== contact: full-bleed rose block ===== */
+  .contact { background: var(--rose-d); color: var(--cream); position: relative; overflow: hidden; }
+  .contact .wrap { padding: clamp(4rem, 9vw, 6rem) 0; position: relative; }
+  .contact h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(2.1rem, 6vw, 3.4rem);
+                max-width: 16ch; }
+  .contact p.lead { margin-top: 1.1rem; font-size: 1.05rem; color: rgba(250,244,234,.85); max-width: 42ch; }
+  .contact .details { display: grid; grid-template-columns: 1fr; gap: 1.75rem; margin-top: 2.75rem; }
+  @media (min-width: 640px) { .contact .details { grid-template-columns: repeat(3, 1fr); } }
+  .contact .details dt { font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase;
+                          color: rgba(250,244,234,.65); margin-bottom: 0.45rem; }
+  .contact .details dd { font-family: var(--font-display); font-size: 1.2rem; }
+  .contact .details a { text-decoration: none; color: var(--cream); border-bottom: 1px solid rgba(250,244,234,.45); }
+
+  footer.site-foot { background: var(--ink); color: rgba(250,244,234,.6); font-size: 0.82rem;
+                      text-align: center; padding: 2.1rem 0; }
+  footer.site-foot p + p { margin-top: 0.4rem; }
+
+  /* ===== scroll reveal ===== */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="disclaimer">
+  Independent website concept created by Abdullah Yousaf — not affiliated with,
+  endorsed by, or an official site of this business.
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <span class="wordmark">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <g stroke="#9c3255" stroke-width="1.2">
+          <circle cx="12" cy="7.2" r="2.1" fill="#f3dde2"/>
+          <circle cx="17" cy="10.6" r="2.1" fill="#f3dde2"/>
+          <circle cx="15" cy="16.3" r="2.1" fill="#f3dde2"/>
+          <circle cx="9" cy="16.3" r="2.1" fill="#f3dde2"/>
+          <circle cx="7" cy="10.6" r="2.1" fill="#f3dde2"/>
+          <circle cx="12" cy="11.6" r="1.6" fill="#9c3255" stroke="none"/>
+        </g>
+      </svg>
+      Cherry Blossom Florist
+    </span>
+    <nav>
+      <a href="#occasions">Occasions</a>
+      <a href="#arrangements">Arrangements</a>
+      <a href="#delivery">Delivery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero grain">
+  <svg class="branch-art" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+    <path d="M390 20 C 320 70, 260 90, 210 150 C 170 200, 150 260, 90 300 C 60 320, 30 340, 10 380"
+          stroke="#7d2644" stroke-width="1.4" fill="none"/>
+    <path d="M250 120 C 270 95, 300 85, 320 70" stroke="#7d2644" stroke-width="1.1" fill="none"/>
+    <path d="M170 210 C 190 190, 220 185, 245 175" stroke="#7d2644" stroke-width="1.1" fill="none"/>
+    <path d="M110 290 C 130 270, 150 262, 170 250" stroke="#7d2644" stroke-width="1.1" fill="none"/>
+    <g stroke="#7d2644" stroke-width="1" fill="none">
+      <g transform="translate(325,58)"><circle r="6" cx="-6" cy="0"/><circle r="6" cx="6" cy="0"/><circle r="6" cx="0" cy="-6"/><circle r="6" cx="0" cy="6"/><circle r="6" cx="-4.2" cy="-4.2"/></g>
+      <g transform="translate(215,150) scale(0.85)"><circle r="6" cx="-6" cy="0"/><circle r="6" cx="6" cy="0"/><circle r="6" cx="0" cy="-6"/><circle r="6" cx="0" cy="6"/><circle r="6" cx="-4.2" cy="-4.2"/></g>
+      <g transform="translate(248,168) scale(0.6)"><circle r="6" cx="-6" cy="0"/><circle r="6" cx="6" cy="0"/><circle r="6" cx="0" cy="-6"/><circle r="6" cx="0" cy="6"/><circle r="6" cx="-4.2" cy="-4.2"/></g>
+      <g transform="translate(90,300) scale(0.9)"><circle r="6" cx="-6" cy="0"/><circle r="6" cx="6" cy="0"/><circle r="6" cx="0" cy="-6"/><circle r="6" cx="0" cy="6"/><circle r="6" cx="-4.2" cy="-4.2"/></g>
+      <g transform="translate(172,246) scale(0.55)"><circle r="6" cx="-6" cy="0"/><circle r="6" cx="6" cy="0"/><circle r="6" cx="0" cy="-6"/><circle r="6" cx="0" cy="6"/><circle r="6" cx="-4.2" cy="-4.2"/></g>
+      <g transform="translate(20,368) scale(0.7)"><circle r="6" cx="-6" cy="0"/><circle r="6" cx="6" cy="0"/><circle r="6" cx="0" cy="-6"/><circle r="6" cx="0" cy="6"/><circle r="6" cx="-4.2" cy="-4.2"/></g>
+    </g>
+  </svg>
+  <div class="wrap">
+    <p class="kicker reveal">Rockford, Illinois · 3304 N. Main St.</p>
+    <p class="lead reveal">Fresh flowers that make every gesture</p>
+    <h1 class="big reveal">MEANINGFUL</h1>
+    <p class="sub reveal">Hand-arranged in Rockford and delivered locally, for birthdays, sympathy,
+      a slow recovery, or simply because — every bouquet built to order, one stem at a time.</p>
+    <div class="hero-cta reveal">
+      <a class="cta" href="tel:8156541188">Call (815) 654-1188</a>
+      <a class="phone-link" href="mailto:cherryblossomfloristinc@gmail.com">cherryblossomfloristinc@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<section class="occasions" id="occasions">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="kicker">What We Arrange For</p>
+      <h2>Six reasons to send flowers, done properly</h2>
+    </div>
+
+    <div class="occ-row reveal">
+      <span class="num">I</span>
+      <div class="occ-body">
+        <h3>Birthday Flowers</h3>
+        <p>Bright, celebratory arrangements hand-tied for another year worth marking — chosen for
+          color, not just occasion.</p>
+      </div>
+    </div>
+
+    <div class="occ-row right reveal">
+      <span class="num">II</span>
+      <div class="occ-body">
+        <h3>Get Well Flowers</h3>
+        <p>Gentle, cheerful blooms meant to brighten a hospital room or a slow week of recovery
+          at home.</p>
+      </div>
+    </div>
+
+    <div class="occ-row reveal">
+      <span class="num">III</span>
+      <div class="occ-body">
+        <h3>Sympathy Plants</h3>
+        <p>Living, lasting arrangements chosen with care for a family that's grieving — something
+          that stays, not just something sent.</p>
+      </div>
+    </div>
+
+    <div class="occ-row right reveal">
+      <span class="num">IV</span>
+      <div class="occ-body">
+        <h3>Fall Flowers</h3>
+        <p>Warm seasonal color arranged with the turn of a Rockford autumn in mind.</p>
+      </div>
+    </div>
+
+    <div class="occ-row reveal">
+      <span class="num">V</span>
+      <div class="occ-body">
+        <h3>Summer Bouquets</h3>
+        <p>Sun-bright stems arranged for the height of the season, hand-delivered while they're
+          at their best.</p>
+      </div>
+    </div>
+
+    <div class="occ-row right reveal">
+      <span class="num">VI</span>
+      <div class="occ-body">
+        <h3>&ldquo;Make Someone Smile&rdquo; Gifts</h3>
+        <p>Small, thoughtful arrangements for no occasion at all — just a reason to make
+          someone's day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu grain" id="arrangements">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="kicker">From the Design Book</p>
+      <h2>A few of our favorites</h2>
+      <p class="note">Hand-arranged to order. Current pricing varies by size and season — ask
+        us and we'll walk you through it.</p>
+    </div>
+    <div class="menu-list">
+      <div class="menu-item reveal"><span class="name">Be Happy Bouquet with Roses</span><span class="leader"></span><span class="price">Ask about pricing</span></div>
+      <div class="menu-item reveal"><span class="name">Choose Happy Bouquet</span><span class="leader"></span><span class="price">Ask about pricing</span></div>
+      <div class="menu-item reveal"><span class="name">Embrace Happiness Bouquet</span><span class="leader"></span><span class="price">Ask about pricing</span></div>
+      <div class="menu-item reveal"><span class="name">Wings of Light Bouquet</span><span class="leader"></span><span class="price">Ask about pricing</span></div>
+      <div class="menu-item reveal"><span class="name">Pastel Paradise Bouquet</span><span class="leader"></span><span class="price">Ask about pricing</span></div>
+      <div class="menu-item reveal"><span class="name">Garden Symphony Bouquet</span><span class="leader"></span><span class="price">Ask about pricing</span></div>
+      <div class="menu-item reveal"><span class="name">Sunset Sorbet Bouquet</span><span class="leader"></span><span class="price">Ask about pricing</span></div>
+      <div class="menu-item reveal"><span class="name">Coastal Bloom Bouquet</span><span class="leader"></span><span class="price">Ask about pricing</span></div>
+      <div class="menu-item reveal"><span class="name">Lavish Love Bouquet with Long-Stemmed Red Roses</span><span class="leader"></span><span class="price">Ask about pricing</span></div>
+      <div class="menu-item reveal"><span class="name">Designer's Pick of the Day</span><span class="leader"></span><span class="price">Rotates daily</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="delivery" id="delivery">
+  <div class="wrap reveal">
+    <span class="label">Delivery</span>
+    <p>Hand-delivered across Rockford and the surrounding areas — delivery pricing is shown by
+      zip code before you check out, so there's never a surprise at the end.</p>
+  </div>
+</section>
+
+<section class="contact grain" id="contact">
+  <div class="wrap">
+    <h2 class="reveal">Let's put something together.</h2>
+    <p class="lead reveal">Call, email, or stop by the shop on N. Main St.</p>
+    <dl class="details reveal">
+      <div><dt>Call</dt><dd><a href="tel:8156541188">(815) 654-1188</a></dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:cherryblossomfloristinc@gmail.com">cherryblossomfloristinc@gmail.com</a></dd></div>
+      <div><dt>Visit</dt><dd>3304 N. Main St., Rockford, IL 61103</dd></div>
+    </dl>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <p>Cherry Blossom Florist — 3304 N. Main St., Rockford, IL 61103</p>
+    <p>Independent concept by Abdullah Yousaf · Not the official website of this business.</p>
+  </div>
+</footer>
+
+<script>
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+
+</body>
+</html>
